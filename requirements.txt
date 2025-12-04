@@ -1,3 +1,6 @@
-gunicorn
-flask
+fastapi
+uvicorn
 pandas
+numpy
+scikit-learn
+gunicorn
