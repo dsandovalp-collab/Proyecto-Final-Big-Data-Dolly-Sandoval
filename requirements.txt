@@ -6,3 +6,4 @@ scikit-learn
 gunicorn
 pymongo
 python-dotenv
+jinja2
