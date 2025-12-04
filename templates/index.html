@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador de PDFs - MinInterior</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📄 Buscador de PDFs - Ministerio del Interior</h1>
+
+        <input type="text" id="searchInput" placeholder="Buscar por nombre..." onkeyup="filterTable()">
+
+        <table id="pdfTable">
+            <thead>
+                <tr>
+                    <th>Archivo</th>
+                    <th>Abrir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pdf in pdfs %}
+                <tr>
+                    <td>{{ pdf.filename }}</td>
+                    <td>
+                        <a class="btn" href="{{ pdf.url }}" target="_blank">
+                            Ver PDF
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<script>
+function filterTable() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let rows = document.querySelectorAll("#pdfTable tbody tr");
+
+    rows.forEach(row => {
+        let text = row.children[0].innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
